@@ -1,7 +1,6 @@
 from Weapon import Weapon
 import random
 
-
 class Sword(Weapon):
 
     def __init__(self, name, damage, stamina=1):

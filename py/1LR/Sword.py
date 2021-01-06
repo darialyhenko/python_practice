@@ -8,6 +8,9 @@ class Sword(Weapon):
         Weapon.__init__(self, name, damage)
         self.stamina = stamina
 
+    def __str__(self):
+        return f"Оружие - {self.name}, наносимый урон - {self.damage}, уровень целости - {self.stamina}"
+
     def attack(self):
         attack_damage = self.damage * self.stamina
         if random.choice([True, False]) == True:

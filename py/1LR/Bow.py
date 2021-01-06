@@ -18,3 +18,6 @@ class Bow(Weapon):
             return self.__damage
         else:
             return 0
+
+    def __str__(self):
+        return f"Оружие - {self.name}, наносимый урон - {self.damage}, шанс попадания - {self.__chance}"

@@ -13,3 +13,6 @@ class Weapon:
             self.__damage = damage
         else:
             print("Недопустимый урон")
+
+    def __le__(self, weapon2):
+        return self.damage <= weapon2.damage

@@ -12,7 +12,6 @@ class Sword(Weapon):
         return f"Оружие - {self.name}, наносимый урон - {self.damage}, уровень целости - {self.stamina}"
 
     def attack(self):
-        attack_damage = self.damage * self.stamina
         if random.choice([True, False]) == True:
             self.stamina -= 0.1
-        return attack_damage
+        return self.damage * self.stamina

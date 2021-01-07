@@ -9,3 +9,6 @@ class Warrior:
 
     def __del__(self):
         print('%s-й воин отправляется в Вальгаллу' % self.name)
+
+    def setWeapon(self,weapon):
+        self.weapon = weapon

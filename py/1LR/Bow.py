@@ -9,13 +9,13 @@ class Bow(Weapon):
         self.__chance = chance
 
     def bowdamage(self):
-        return self.__damage * (self.__chance * 0.01)
+        return self.damage * (self.__chance * 0.01)
 
     def attack(self):
         chance_attack = self.__chance * 0.01
-        rn = random.random()
+        rn = random.uniform(0, 1)
         if rn <= chance_attack:
-            return self.__damage
+            return self.bowdamage()
         else:
             return 0
 

@@ -1,5 +1,5 @@
 import unittest
-from Bow import Bow
+from Weapons.Bow import Bow
 
 
 class TestBowMethods(unittest.TestCase):

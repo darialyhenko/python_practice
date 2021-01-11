@@ -1,5 +1,5 @@
 import unittest
-from Weapon import Weapon
+from Weapons.Weapon import Weapon
 
 
 class TestWeaponMethods(unittest.TestCase):

@@ -1,7 +1,7 @@
-from Warrior import Warrior
+from Warrior.Warrior import Warrior
 from Weapons.Bow import Bow
 from Weapons.Sword import Sword
-from Armor import Armor
+from Armor.Armor import Armor
 
 import random
 import copy

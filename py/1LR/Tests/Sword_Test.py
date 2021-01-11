@@ -1,5 +1,5 @@
 import unittest
-from Sword import Sword
+from Weapons.Sword import Sword
 
 
 class TestSwordMethods(unittest.TestCase):

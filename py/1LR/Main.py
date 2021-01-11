@@ -67,7 +67,10 @@ if __name__ == "__main__":
                 print('Мощные кулаки %s-его воина нанесли %s урона!' % (x.name, x.strength))
             else:
                 print('Оружие, которое сейчас наносит урон: %s' % x.weapon[0].name)
-                print('%s-й воин одет в броню: %s' % (y.name,y.armor.__str__()))
+                if y.armor.stamina>0:
+                    print('%s-й воин одет в броню: %s' % (y.name,y.armor.__str__()))
+                else:
+                    print('У %s-го воина нет брони, какой ужас!' % y.name)
                 y.health -= x.weapon[0].burn_attack(y)
                 x.weapon[0].freeze_attack(y)
                 if type(x.weapon[0]) == Sword and x.weapon[0].stamina == 0:

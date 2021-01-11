@@ -1,4 +1,5 @@
-from Effects import Effects
+from Effects.Effects import Effects
+
 
 class Weapon(Effects):
     def __init__(self, name, damage):
@@ -15,6 +16,9 @@ class Weapon(Effects):
             self.__damage = damage
         else:
             print("Недопустимый урон")
+
+    def __str__(self):
+        return f"Оружие - {self.name}, наносимый урон - {self.damage}"
 
     def __le__(self, weapon2):
         return self.damage <= weapon2.damage

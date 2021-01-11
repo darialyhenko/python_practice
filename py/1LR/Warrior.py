@@ -1,4 +1,6 @@
 class Warrior:
+    count = 3
+
     def __init__(self, name, strength, health):
         self.name = name
         self.strength = strength
@@ -10,5 +12,5 @@ class Warrior:
     def __del__(self):
         print('%s-й воин отправляется в Вальгаллу' % self.name)
 
-    def setWeapon(self,weapon):
+    def setWeapon(self, weapon):
         self.weapon = weapon

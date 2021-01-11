@@ -1,4 +1,4 @@
-from Weapon import Weapon
+from Weapons.Weapon import Weapon
 import random
 
 
@@ -9,7 +9,7 @@ class Sword(Weapon):
         self.stamina = stamina
 
     def __str__(self):
-        return f"Оружие - {self.name}, наносимый урон - {self.damage}, уровень целости - {self.stamina}"
+        return f"{Weapon.__str__(self)},уровень целости - {self.stamina}, {self.effects_print()}"
 
     def attack(self):
         if random.choice([True, False]) == True:

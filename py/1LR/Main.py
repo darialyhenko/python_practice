@@ -1,6 +1,6 @@
 from Warrior import Warrior
-from Bow import Bow
-from Sword import Sword
+from Weapons.Bow import Bow
+from Weapons.Sword import Sword
 
 import random
 import copy
@@ -19,6 +19,10 @@ if __name__ == "__main__":
 
     print('\nИмеющийся ассортимент оружия:')
     for i in range(len(list_weapons)):
+        if random.choice([True, False]) == True:
+            list_weapons[i].freeze()
+        if random.choice([True, False]) == True:
+            list_weapons[i].burn()
         print(list_weapons[i].__str__())
         if (list_weapons[thebest].__le__(list_weapons[i])):
             thebest = i
@@ -35,19 +39,24 @@ if __name__ == "__main__":
         random.shuffle(list_weapons)
         unit_list[i].setWeapon(list_weapons[:weapons_number])
 
-    print('\nВоины разобрали свои оружия, битва началась!\n')
+    print('\nВоины разобрали свои оружия, битва началась!!!\n')
     while True:
-        x = random.choice(unit_list)
+        while True:
+            x = random.choice(unit_list)
+            if x.weapon[0].stopfight_count == 0:
+                break
+            print('На %s-его воина действует заморозка еще %s ход(а), он не может никого бить! ' % (x.name, x.weapon[0].stopfight_count))
         y = random.choice(unit_list)
-
-        if x != y:
+        if x != y and x.weapon[0].stopfight_count == 0:
             print('%s-й воин бьется с %s-м воином' % (x.name, y.name))
             if not x.weapon:
                 print('У %s-его воина не осталось оружия! В бой идут кулаки...' % x.name)
                 y.health -= x.strength
                 print('Мощные кулаки %s-его воина нанесли %s урона!' % (x.name, x.strength))
             else:
-                y.health -= x.weapon[0].attack()
+                print('Оружие, которое сейчас наносит урон: %s' % x.weapon[0].name)
+                y.health -= x.weapon[0].burn_attack(y)
+                x.weapon[0].freeze_attack(y)
                 if type(x.weapon[0]) == Sword and x.weapon[0].stamina == 0:
                     print('У %s-го воина сточился меч! Придется обойтись без него...' % x.name)
                     x.weapon.pop(0)

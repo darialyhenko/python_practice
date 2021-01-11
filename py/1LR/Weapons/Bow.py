@@ -1,4 +1,4 @@
-from Weapon import Weapon
+from Weapons.Weapon import Weapon
 import random
 
 
@@ -20,4 +20,4 @@ class Bow(Weapon):
             return 0
 
     def __str__(self):
-        return f"Оружие - {self.name}, наносимый урон - {self.damage}, шанс попадания - {self.__chance}"
+        return f"{Weapon.__str__(self)}, шанс попадания - {self.__chance}, {self.effects_print()}"

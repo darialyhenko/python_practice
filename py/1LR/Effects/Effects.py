@@ -2,32 +2,32 @@ from abc import ABC
 
 
 class Effects(ABC):
+    __burn = 0
+    __freeze = 0
+    stopfight_count = 0
 
-    @property
     def burn(self):
-        return self.burn
+        self.__burn = 1
 
-    @burn.setter
-    def burn(self, count):
-        self.burn = count
+    def freeze(self):
+        self.__freeze = 1
 
     def burn_attack(self, warrior):
-        if self.burn == 1:
+        if self.__burn == 1:
             print('%s-й воин только что был подожжен!' % warrior.name)
-            return warrior.health * 0.05
+            return self.attack() + warrior.health * 0.05
         else:
-            return 0
+            return self.attack()
 
-    @property
-    def freeze(self):
-        return self.freeze
-
-    @freeze.setter
-    def freeze(self, count):
-        self.freeze = count
-
-    def freeze_attack(self, count):
-        if self.freeze == 1:
-            return count
+    def freeze_attack(self, warrior):
+        if warrior.count <= 0:
+            warrior.count = 3
+        if self.__freeze == 1:
+            print('%s-й воин был заморожен и не может атаковать еще %s ход(а)!' % (warrior.name, warrior.count - 1))
+            warrior.weapon[0].stopfight_count = warrior.count - 1
+            warrior.count -= 1
         else:
-            return 0
+            warrior.weapon[0].stopfight_count = 0
+
+    def effects_print(self):
+        return f"эффект поджога - {self.__burn}, эффект заморозки - {self.__freeze}"

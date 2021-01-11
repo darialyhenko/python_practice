@@ -1,6 +1,7 @@
 from Warrior import Warrior
 from Weapons.Bow import Bow
 from Weapons.Sword import Sword
+from Armor import Armor
 
 import random
 import copy
@@ -28,6 +29,16 @@ if __name__ == "__main__":
             thebest = i
     print('\nЛучшее оружие для воина - %s' % (list_weapons[thebest].__str__()))
 
+    armor1 = Armor("Броня1", random.randint(1, 99), 100)
+    armor2 = Armor("Броня2", random.randint(1, 99), 100)
+    armor3 = Armor("Броня3", random.randint(1, 99), 100)
+    armor_list = [armor1,armor2,armor3]
+    for i in range(len(armor_list)):
+        if random.choice([True, False]) == True:
+            armor_list[i].freeze()
+        if random.choice([True, False]) == True:
+            armor_list[i].burn()
+
     unit1 = Warrior('1', 3, 100)
     unit2 = Warrior('2', 5, 100)
     unit3 = Warrior('3', 7, 100)
@@ -38,6 +49,7 @@ if __name__ == "__main__":
     for i in range(len(unit_list)):
         random.shuffle(list_weapons)
         unit_list[i].setWeapon(list_weapons[:weapons_number])
+        unit_list[i].setArmor(random.choice(armor_list))
 
     print('\nВоины разобрали свои оружия, битва началась!!!\n')
     while True:
@@ -55,6 +67,7 @@ if __name__ == "__main__":
                 print('Мощные кулаки %s-его воина нанесли %s урона!' % (x.name, x.strength))
             else:
                 print('Оружие, которое сейчас наносит урон: %s' % x.weapon[0].name)
+                print('%s-й воин одет в броню: %s' % (y.name,y.armor.__str__()))
                 y.health -= x.weapon[0].burn_attack(y)
                 x.weapon[0].freeze_attack(y)
                 if type(x.weapon[0]) == Sword and x.weapon[0].stamina == 0:

@@ -9,7 +9,7 @@ class Sword(Weapon):
         self.stamina = stamina
 
     def __str__(self):
-        return f"{Weapon.__str__(self)},уровень целости - {self.stamina}, {self.effects_print()}"
+        return f"{Weapon.__str__(self)},уровень целости - {self.stamina}"
 
     def attack(self):
         if random.choice([True, False]) == True:

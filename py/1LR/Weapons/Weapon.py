@@ -18,7 +18,7 @@ class Weapon(Effects):
             print("Недопустимый урон")
 
     def __str__(self):
-        return f"Оружие - {self.name}, наносимый урон - {self.damage}"
+        return f"Оружие - {self.name}, наносимый урон - {self.damage},{self.effects_print()}"
 
     def __le__(self, weapon2):
         return self.damage <= weapon2.damage

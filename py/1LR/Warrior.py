@@ -14,3 +14,6 @@ class Warrior:
 
     def setWeapon(self, weapon):
         self.weapon = weapon
+
+    def setArmor(self, armor):
+        self.armor = armor
